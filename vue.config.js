@@ -6,6 +6,7 @@ module.exports = {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@js': path.resolve(__dirname, 'src', 'assets', 'js'),
+        '@sass': path.resolve(__dirname, 'src', 'assets', 'sass'),
         '@components': path.resolve(__dirname, 'src', 'components')
       }
     },
@@ -19,7 +20,7 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                additionalData: "@import '@/assets/sass/styles.scss';"
+                additionalData: "@import '@sass/styles.scss';"
               }
             },
           ],
