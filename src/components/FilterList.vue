@@ -7,7 +7,7 @@
           :label="l"
           v-for="l in ['Frontend', 'CSS', 'JavaScript']" />
       </div>
-      <a href="#" class="filter__clear">
+      <a href="#" class="filter__clear" title="Clear all filters">
         Clear
       </a>
     </div>
@@ -49,15 +49,15 @@
     }
 
     &__clear {
-      color: $headerBG;
       font-size: .75rem;
-      color: $veryDarkGrayishCyan;
+      color: $darkGrayishCyan;
 
       &:visited {
-        color: $headerBG;
+        color: $darkGrayishCyan;
       }
 
       &:hover {
+        color: $headerBG;
         border-bottom: .0625rem dotted $headerBG;
       }
     }
