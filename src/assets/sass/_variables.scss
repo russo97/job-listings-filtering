@@ -9,3 +9,13 @@ $darkGrayishCyan: hsl(180, 8%, 52%);
 $lightGrayishCyan: hsl(180, 52%, 96%);
 $lightGrayishCyan2: hsl(180, 31%, 95%);
 $veryDarkGrayishCyan: hsl(180, 14%, 20%);
+
+$breakpoints-up: (
+  "mobile": 23.4375rem,
+  "desktop": 90rem
+);
+
+$breakpoints-down: (
+  "mobile": 23.375rem,
+  "desktop": 89.9375rem
+);
