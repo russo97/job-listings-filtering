@@ -17,5 +17,9 @@
     background-color: $headerBG;
     background-repeat: no-repeat;
     background-image: url("../assets/images/bg-header-mobile.svg");
+
+    @include breakpoint-up(desktop) {
+      background-image: url("../assets/images/bg-header-desktop.svg");
+    }
   }
 </style>
