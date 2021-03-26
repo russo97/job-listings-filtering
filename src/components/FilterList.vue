@@ -1,7 +1,7 @@
 <template>
-  <div class="filter">
+  <div class="filter" :class="{ hide: !filterExist }">
     <div class="filter__container">
-      <transition-group tag="div" name="fade" class="filter__pills">
+      <transition-group tag="div" name="fade" mode="out-in" class="filter__pills">
         <filter-pill
           :key="filter"
           :label="filter"
@@ -18,6 +18,7 @@
   import { mapState } from 'vuex';
 
   import methods from "@utils/methods";
+  import getters from "@utils/getters";
 
   import FilterPill from "./FilterPill.vue";
 
@@ -37,7 +38,9 @@
     computed: {
       ...mapState([
         'filters'
-      ])
+      ]),
+
+      ...getters
     },
 
     components: {
@@ -50,7 +53,15 @@
   .filter {
     width: 90%;
     margin: 0 auto;
+    transition: all .4s ease-in-out;
     transform: translateY(calc(100% - 2.1875rem));
+
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: .4s;
+      transform: translateY(-50px);
+    }
 
     &__container {
       width: 100%;
@@ -70,18 +81,7 @@
       & .fade-enter,
       & .fade-leave-to {
         opacity: 0;
-      }
-
-      & .fade-enter {
-        transform: translateY(50px);
-      }
-
-      & .fade-leave-to {
         transform: scale(0);
-      }
-
-      & .fade-leave-active {
-        position: absolute;
       }
     }
 
