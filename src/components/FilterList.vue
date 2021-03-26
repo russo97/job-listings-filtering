@@ -3,9 +3,9 @@
     <div class="filter__container">
       <div class="filter__pills">
         <filter-pill
-          :key="l"
-          :label="l"
-          v-for="l in ['Frontend', 'CSS', 'JavaScript']" />
+          :key="filter"
+          :label="filter"
+          v-for="filter in filters" />
       </div>
       <a href="#" class="filter__clear" title="Clear all filters">
         Clear
@@ -15,10 +15,18 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+
   import FilterPill from "./FilterPill.vue";
 
   export default {
     name: "FilterList",
+
+    computed: {
+      ...mapState([
+        'filters'
+      ])
+    },
 
     components: {
       FilterPill
