@@ -7,7 +7,7 @@
           :label="filter"
           v-for="filter in filters" />
       </div>
-      <a href="#" class="filter__clear" title="Clear all filters">
+      <a href="#" class="filter__clear" title="Clear all filters" @click="clearFilters">
         Clear
       </a>
     </div>
@@ -17,10 +17,22 @@
 <script>
   import { mapState } from 'vuex';
 
+  import methods from "@utils/methods";
+
   import FilterPill from "./FilterPill.vue";
 
   export default {
     name: "FilterList",
+
+    methods: {
+      ...methods,
+
+      clearFilters ($event) {
+        $event.preventDefault();
+
+        this.removeAllFilters();
+      }
+    },
 
     computed: {
       ...mapState([

@@ -4,7 +4,8 @@ import { mapActions } from 'vuex';
 export default {
   ...mapActions([
     'setJobList',
-    'filterRemove'
+    'filterRemove',
+    'filterRemoveAll'
   ]),
 
   async loadData () {
@@ -15,5 +16,9 @@ export default {
 
   removeFilter (filter) {
     this.filterRemove(filter);
+  },
+
+  removeAllFilters () {
+    this.filterRemoveAll();
   }
 }
