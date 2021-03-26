@@ -2,7 +2,7 @@
   <div class="pill">
     <div class="pill__container">
       <div class="pill__label"> {{ label }} </div>
-      <div class="pill__close">
+      <div class="pill__close" @click="removeFilter(label)">
         &#10006;
       </div>
     </div>
@@ -10,8 +10,12 @@
 </template>
 
 <script>
+  import methods from "@utils/methods";
+
   export default {
     name: "FilterPill",
+
+    methods: methods,
 
     props: {
       label: {
