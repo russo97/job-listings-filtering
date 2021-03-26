@@ -1,12 +1,12 @@
 <template>
   <div class="filter">
     <div class="filter__container">
-      <div class="filter__pills">
+      <transition-group tag="div" name="fade" class="filter__pills">
         <filter-pill
           :key="filter"
           :label="filter"
           v-for="filter in filters" />
-      </div>
+      </transition-group>
       <a href="#" class="filter__clear" title="Clear all filters" @click="clearFilters">
         Clear
       </a>
@@ -66,6 +66,23 @@
     &__pills {
       display: flex;
       flex-flow: row wrap;
+
+      & .fade-enter,
+      & .fade-leave-to {
+        opacity: 0;
+      }
+
+      & .fade-enter {
+        transform: translateY(50px);
+      }
+
+      & .fade-leave-to {
+        transform: scale(0);
+      }
+
+      & .fade-leave-active {
+        position: absolute;
+      }
     }
 
     &__clear {

@@ -32,6 +32,7 @@
     overflow: hidden;
     border-radius: .25rem;
     display: inline-block;
+    transition: all .4s ease-in-out;
 
     &__container {
       display: flex;
