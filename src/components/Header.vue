@@ -32,7 +32,7 @@
 
     &__container {
       width: 100%;
-      height: 155px;
+      height: 9.6875rem;
 
       display: flex;
       align-items: flex-end;

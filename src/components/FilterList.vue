@@ -93,6 +93,7 @@
       border-radius: .3125rem;
       padding: 1rem 1.5625rem;
       font-family: $spartanFamily;
+      box-shadow: 0 10px 30px -15px $darkGrayishCyan;
     }
 
     &__pills {

@@ -44,19 +44,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      height: 27px;
+      padding: 0 .5rem;
     }    
 
     &__label {
+      flex: 1 100%;
       color: $headerBG;
       font-weight: 700;
       font-size: .75rem;
-      padding: .25rem .375rem;
+      background-color: $lightGrayishCyan;
     }
 
     &__close {
       color: $white;
       cursor: pointer;
-      padding: .1875rem .5rem;
+      padding-bottom: 2px;
       background-color: $headerBG;
       transition: background-color .1s ease-in-out;
 
