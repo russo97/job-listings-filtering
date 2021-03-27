@@ -29,7 +29,7 @@
           location,
           position,
           languages
-        }) in jobList"
+        }) in filteredJobList"
       />
     </div>
   </main>
@@ -60,6 +60,18 @@
           transform: `translateY(${this.filterHeight})`
         };
       },
+
+      filteredJobList () {
+        const { filterExist, jobList, filters } = this;
+
+        return filterExist
+          ? jobList.filter(job => {
+            const { role, level, languages } = job;
+
+            return filters.every( filter => [role, level, ...languages].includes(filter) );
+          })
+          : jobList;
+      }
     },
 
     components: {
