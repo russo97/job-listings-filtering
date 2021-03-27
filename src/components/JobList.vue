@@ -9,9 +9,11 @@
         :level="level"
         :tools="tools"
         :company="company"
+        :postedAt="postedAt"
         :location="location"
         :contract="contract"
         :featured="featured"
+        :position="position"
         :languages="languages"
         v-for="({
           id,
@@ -21,9 +23,11 @@
           level,
           tools,
           company,
+          postedAt,
           featured,
           contract,
           location,
+          position,
           languages
         }) in jobList"
       />
@@ -53,7 +57,7 @@
 
       translate() {
         return {
-          transform: `translateY(${this.filterHeight})`,
+          transform: `translateY(${this.filterHeight})`
         };
       },
     },
@@ -74,8 +78,8 @@
       justify-content: center;
       flex-direction: column;
 
-      padding: 10px 0;
-      background-color: $white;
+      padding: .625rem 0;
+      margin-top: 1.5rem;
       transition: all 0.4s ease-in-out;
     }
   }
