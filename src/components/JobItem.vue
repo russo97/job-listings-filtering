@@ -1,7 +1,33 @@
 <template>
   <article class="joblist">
-    <div class="joblist__container">
+    <div class="joblist__container" :class="{ featured }">
       <img :src="companyLogo" class="joblist__logo" alt="company logo" />
+
+      <div class="joblist__company">
+        <div class="joblist__company__info">
+          <b class="joblist__company__info__name">{{ company }}</b>
+          <div class="joblist__company__info__new" v-if="isNew">NEW!</div>
+          <div class="joblist__company__info__featured" v-if="featured">FEATURED</div>
+        </div>
+
+        <h3 class="joblist__company__position">{{ position }}</h3>
+
+        <p class="joblist__company__details">
+          {{ details }}
+        </p>
+      </div>
+
+      <div class="joblist__divider"></div>
+
+      <div class="joblist__skills">
+        <a
+          href="#"
+          :key="require"
+          class="joblist__skills__skill"
+          v-for="require in requires">
+          {{ require }}
+        </a>
+      </div>
     </div>
   </article>
 </template>
@@ -41,6 +67,11 @@
         required: true
       },
 
+      postedAt: {
+        type: String,
+        required: true
+      },
+
       featured: {
         type: Boolean,
         required: true
@@ -56,6 +87,11 @@
         required: true
       },
 
+      position: {
+        type: String,
+        required: true
+      },
+
       languages: {
         type: Array,
         required: true
@@ -65,6 +101,18 @@
     computed: {
       companyLogo () {
         return require(`@/assets/images/${this.logo}`);
+      },
+
+      details () {
+        const { postedAt, contract, location } = this;
+
+        return [postedAt, contract, location].join(' • ');
+      },
+
+      requires () {
+        const { role, level, languages } = this;
+
+        return languages.concat(role, level);
       }
     }
   }
@@ -73,10 +121,154 @@
 <style lang="scss">
   .joblist {
     width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 2.1875rem;
 
     &__container {
-      background: red;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      padding: 0 20px;
+      border-radius: 5px;
+      position: relative;
+      background-color: $white;
+      box-shadow: 0 10px 30px -15px $darkGrayishCyan;
+
+      &.featured {
+        border-left: 5px solid $headerBG;
+      }
+
+      @include breakpoint-up (desktop) {
+        padding: 30px 20px;
+        align-items: center;
+        flex-direction: row;
+      }
+    }
+
+    &__logo {
+      top: -24px;
+      width: 48px;
+      height: 48px;
+      position: absolute;
+
+      @include breakpoint-up (desktop) {
+        top: unset;
+        width: 90px;
+        height: 90px;
+        position: relative;
+      }
+    }
+
+    &__company {
+      flex: 2 100%;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      margin-top: 35px;
+
+      @include breakpoint-up (desktop) {
+        margin-top: 0px;
+        margin-left: 2em;
+        justify-content: space-around;
+      }
+
+      &__info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: $spartanFamily;
+
+        &__name {
+          font-size: .8125rem;
+          margin-right: 1.25rem;
+          color: hsl(180, 29%, 50%);
+        }
+
+        &__new {
+          color: $white;
+          font-weight: 700;
+          margin-right: 5px;
+          font-size: .625rem;
+          border-radius: 25px;
+          padding: 6px 7px 4px;
+          background-color: hsl(180, 29%, 50%);
+        }
+
+        &__featured {
+          color: $white;
+          font-weight: 700;
+          font-size: .625rem;
+          border-radius: 25px;
+          padding: 6px 7px 5px;
+          background-color: $veryDarkGrayishCyan;
+        }
+      }
+
+      &__position {
+        font-size: 1rem;
+        margin-top: .875rem;
+        color: $veryDarkGrayishCyan;
+        font-family: $spartanFamily;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+          color: $headerBG;
+        }
+      }
+
+      &__details {
+        font-size: 12px;
+        margin-top: .875rem;
+        color: $darkGrayishCyan;
+        font-family: $spartanFamily;
+      }
+    }
+
+    &__divider {
+      width: 100%;
+      height: 1px;
+      margin: 10px 0;
+      background-color: $lightGrayishCyan2;
+
+      @include breakpoint-up (desktop) {
+        display: none;
+      }
+    }
+
+    &__skills {
+      flex: 3 100%;
+      display: flex;
+      align-items: center;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      margin-bottom: 15px;
+
+      @include breakpoint-up (desktop) {
+        margin-bottom: 0px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      &__skill {
+        padding: 8px;
+        color: $headerBG;
+        font-weight: 700;
+        font-size: .75rem;
+        border-radius: 4px;
+        margin: 0 1rem .5rem 0;
+        font-family: $spartanFamily;
+        transition: all .2s ease-in-out;
+        background-color: $lightGrayishCyan2;
+
+        &:hover {
+          color: $white;
+          background-color: $headerBG;
+        }
+      }
     }
   }
 </style>
