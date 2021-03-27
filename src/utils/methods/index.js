@@ -5,7 +5,8 @@ export default {
   ...mapActions([
     'setJobList',
     'filterRemove',
-    'filterRemoveAll'
+    'filterRemoveAll',
+    'setFilterHeight'
   ]),
 
   async loadData () {
@@ -20,5 +21,9 @@ export default {
 
   removeAllFilters () {
     this.filterRemoveAll();
+  },
+
+  changeFilterHeight (height) {
+    this.setFilterHeight(height);
   }
 }

@@ -11,8 +11,11 @@ const filterRemoveAll = ({ commit }) => {
   commit('FILTER_REMOVE', []);
 };
 
+const setFilterHeight = ({ commit }, payload) => commit('SET_FILTER_HEIGHT', payload);
+
 export default {
   setJobList,
   filterRemove,
+  setFilterHeight,
   filterRemoveAll
 };
