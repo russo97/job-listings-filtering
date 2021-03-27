@@ -3,6 +3,7 @@ import { mapActions } from 'vuex';
 
 export default {
   ...mapActions([
+    'addFilter',
     'setJobList',
     'filterRemove',
     'filterRemoveAll',
