@@ -1,7 +1,32 @@
 <template>
   <main class="main">
     <div class="main__container container" :style="translate">
-      main container
+      <JobItem
+        :key="id"
+        :isNew="isNew"
+        :logo="logo"
+        :role="role"
+        :level="level"
+        :tools="tools"
+        :company="company"
+        :location="location"
+        :contract="contract"
+        :featured="featured"
+        :languages="languages"
+        v-for="({
+          id,
+          new: isNew,
+          logo,
+          role,
+          level,
+          tools,
+          company,
+          featured,
+          contract,
+          location,
+          languages
+        }) in jobList"
+      />
     </div>
   </main>
 </template>
@@ -10,22 +35,32 @@
   import methods from "@utils/methods";
   import getters from "@utils/getters";
 
+  import { mapState } from "vuex";
+
+  import JobItem from "./JobItem";
+
   export default {
     name: "JobList",
 
     methods: {
-      ...methods
+      ...methods,
     },
 
     computed: {
       ...getters,
 
-      translate () {
+      ...mapState(["jobList"]),
+
+      translate() {
         return {
-          'transform': `translateY(${this.filterHeight})`
-        }
-      }
-    }
+          transform: `translateY(${this.filterHeight})`,
+        };
+      },
+    },
+
+    components: {
+      JobItem,
+    },
   }
 </script>
 
@@ -40,8 +75,8 @@
       flex-direction: column;
 
       padding: 10px 0;
-      background-color: red;
-      transition: all .4s ease-in-out;
+      background-color: $white;
+      transition: all 0.4s ease-in-out;
     }
   }
 </style>
