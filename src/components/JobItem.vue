@@ -24,6 +24,8 @@
           href="#"
           :key="require"
           class="joblist__skills__skill"
+          @click.prevent="includeFilter(require)"
+          :class="{ active: filterAlreadyExists(require) }"
           v-for="require in requires">
           {{ require }}
         </a>
@@ -33,6 +35,9 @@
 </template>
 
 <script>
+  import methods from "@utils/methods";
+  import getters from "@utils/getters";
+
   export default {
     name: "JobItem",
 
@@ -98,7 +103,25 @@
       }
     },
 
+    methods: {
+      ...methods,
+
+      includeFilter (filter) {
+        const { addFilter, filterAlreadyExists } = this;
+
+        if ( !filterAlreadyExists(filter) ) {
+          addFilter(filter);
+        }
+      },
+
+      filterAlreadyExists (filter) {
+        return this.filters.indexOf(filter) > -1;
+      }
+    },
+
     computed: {
+      ...getters,
+
       companyLogo () {
         return require(`@/assets/images/${this.logo}`);
       },
@@ -264,7 +287,8 @@
         transition: all .2s ease-in-out;
         background-color: $lightGrayishCyan2;
 
-        &:hover {
+        &:hover,
+        &.active {
           color: $white;
           background-color: $headerBG;
         }
