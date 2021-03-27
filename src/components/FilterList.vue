@@ -39,7 +39,7 @@
           const { changeFilterHeight } = this;
 
           changeFilterHeight(this.$refs.filt.clientHeight);
-        }, 1000);
+        }, 500);
       }
     },
 
