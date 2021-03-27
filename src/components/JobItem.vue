@@ -1,7 +1,7 @@
 <template>
   <article class="joblist">
     <div class="joblist__container">
-      joblist
+      <img :src="companyLogo" class="joblist__logo" alt="company logo" />
     </div>
   </article>
 </template>
@@ -59,6 +59,12 @@
       languages: {
         type: Array,
         required: true
+      }
+    },
+
+    computed: {
+      companyLogo () {
+        return require(`@/assets/images/${this.logo}`);
       }
     }
   }
