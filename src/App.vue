@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <Header />
+
+    <JobList />
   </div>
 </template>
 
@@ -8,6 +10,7 @@
   import methods from "@utils/methods";
 
   import Header from "@components/Header.vue";
+  import JobList from "@components/JobList.vue";
 
   export default {
     name: 'App',
@@ -23,7 +26,8 @@
     },
 
     components: {
-      Header
+      Header,
+      JobList
     }
   }
 </script>

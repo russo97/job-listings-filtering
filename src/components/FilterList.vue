@@ -1,5 +1,5 @@
 <template>
-  <div class="filter" :class="{ hide: !filterExist }">
+  <div class="filter" :class="{ hide: !filterExist }" ref="filt">
     <div class="filter__container">
       <transition-group tag="div" name="fade" mode="out-in" class="filter__pills">
         <filter-pill
@@ -32,6 +32,14 @@
         $event.preventDefault();
 
         this.removeAllFilters();
+      },
+
+      changeHeight () {
+        setTimeout(() => {
+          const { changeFilterHeight } = this;
+
+          changeFilterHeight(this.$refs.filt.clientHeight);
+        }, 1000);
       }
     },
 
@@ -45,12 +53,25 @@
 
     components: {
       FilterPill
+    },
+
+    mounted () {
+      this.changeHeight();
+
+      window.onresize = this.changeHeight;
+    },
+
+    watch: {
+      filtersCount () {
+        this.changeHeight();
+      }
     }
   }
 </script>
 
 <style lang="scss">
   .filter {
+    z-index: 2;
     width: 90%;
     margin: 0 auto;
     transition: all .4s ease-in-out;
