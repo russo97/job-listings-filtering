@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <div class="main__container container" :style="translate">
+    <transition-group tag="div" name="fade" mode="in-out" class="main__container container" :style="translate">
       <JobItem
         :key="id"
         :isNew="isNew"
@@ -31,7 +31,7 @@
           languages
         }) in filteredJobList"
       />
-    </div>
+    </transition-group>
   </main>
 </template>
 
@@ -92,7 +92,30 @@
 
       padding: .625rem 0;
       margin-top: 1.5rem;
+      transform: translateY(1.625rem);
       transition: all 0.4s ease-in-out;
+
+      & .fade-enter,
+      & .fade-leave-to {
+        opacity: 0;
+      }
+
+      & .fade-enter {
+        transform: translateY(30%);
+      }
+
+      & .fade-leave-to {
+        transform: translateY(30%);
+      }
+
+      & .fade-enter-active,
+      & .fade-leave-active {
+        transition: all .4s;
+      }
+
+      & .fade-move {
+        transition: all .4s;
+      }
     }
   }
 </style>
