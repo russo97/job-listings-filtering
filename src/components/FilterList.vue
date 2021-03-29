@@ -7,7 +7,7 @@
           :label="filter"
           v-for="filter in filters" />
       </transition-group>
-      <a href="#" class="filter__clear" title="Clear all filters" @click="clearFilters">
+      <a href="#" class="filter__clear" title="Clear all filters" @click.prevent="removeAllFilters">
         Clear
       </a>
     </div>
@@ -15,8 +15,6 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
-
   import methods from "@utils/methods";
   import getters from "@utils/getters";
 
@@ -28,12 +26,6 @@
     methods: {
       ...methods,
 
-      clearFilters ($event) {
-        $event.preventDefault();
-
-        this.removeAllFilters();
-      },
-
       changeHeight () {
         setTimeout(() => {
           const { changeFilterHeight } = this;
@@ -44,10 +36,6 @@
     },
 
     computed: {
-      ...mapState([
-        'filters'
-      ]),
-
       ...getters
     },
 
