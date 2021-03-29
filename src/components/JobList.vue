@@ -66,9 +66,9 @@
 
         return filterExist
           ? jobList.filter(job => {
-              const { role, level, languages } = job;
+              const { role, level, languages, tools } = job;
 
-              return filters.every( filter => [role, level, ...languages].includes(filter) );
+              return filters.every( filter => [role, level, ...tools, ...languages].includes(filter) );
             })
           : jobList;
       }

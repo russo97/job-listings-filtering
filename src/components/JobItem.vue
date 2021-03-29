@@ -133,9 +133,9 @@
       },
 
       requires () {
-        const { role, level, languages } = this;
+        const { role, level, languages, tools } = this;
 
-        return languages.concat(role, level);
+        return languages.concat(role, level, ...tools);
       }
     }
   }
@@ -184,7 +184,7 @@
     }
 
     &__company {
-      flex: 2 100%;
+      flex: 1 80%;
       display: flex;
       position: relative;
       flex-direction: column;
@@ -263,7 +263,7 @@
     }
 
     &__skills {
-      flex: 3 100%;
+      flex: 1 100%;
       display: flex;
       align-items: center;
       flex-flow: row wrap;
@@ -271,6 +271,7 @@
       margin-bottom: .9375rem;
 
       @include breakpoint-up (desktop) {
+        flex: 1 100%;
         margin-bottom: 0rem;
         align-items: center;
         justify-content: flex-end;
