@@ -69,7 +69,7 @@
       opacity: 0;
       visibility: hidden;
       transition-delay: .4s;
-      transform: translateY(-50px);
+      transform: translateY(-3.125rem);
     }
 
     &__container {
@@ -81,7 +81,7 @@
       border-radius: .3125rem;
       padding: 1rem 1.5625rem;
       font-family: $spartanFamily;
-      box-shadow: 0 10px 30px -15px $darkGrayishCyan;
+      box-shadow: 0 .625rem 31.8750rem -.9375rem $darkGrayishCyan;
     }
 
     &__pills {

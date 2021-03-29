@@ -45,8 +45,8 @@
       align-items: center;
       justify-content: center;
 
-      height: 27px;
       padding: 0 .5rem;
+      height: 1.6875rem;
     }    
 
     &__label {
@@ -60,7 +60,7 @@
     &__close {
       color: $white;
       cursor: pointer;
-      padding-bottom: 2px;
+      padding-bottom: .125rem;
       background-color: $headerBG;
       transition: background-color .1s ease-in-out;
 

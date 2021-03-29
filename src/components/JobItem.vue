@@ -152,33 +152,33 @@
       align-items: flex-start;
       justify-content: center;
 
-      padding: 0 20px;
-      border-radius: 5px;
+      padding: 0 1.25rem;
       position: relative;
+      border-radius: .3125rem;
       background-color: $white;
-      box-shadow: 0 10px 30px -15px $darkGrayishCyan;
+      box-shadow: 0 .625rem 1.875rem -.9375rem $darkGrayishCyan;
 
       &.featured {
-        border-left: 5px solid $headerBG;
+        border-left: .3125rem solid $headerBG;
       }
 
       @include breakpoint-up (desktop) {
-        padding: 30px 20px;
         align-items: center;
         flex-direction: row;
+        padding: 1.875rem 1.25rem;
       }
     }
 
     &__logo {
-      top: -24px;
-      width: 48px;
-      height: 48px;
+      top: -1.5rem;
+      width: 3rem;
+      height: 3rem;
       position: absolute;
 
       @include breakpoint-up (desktop) {
         top: unset;
-        width: 90px;
-        height: 90px;
+        width: 5.625rem;
+        height: 5.625rem;
         position: relative;
       }
     }
@@ -191,11 +191,11 @@
       align-items: flex-start;
       justify-content: space-between;
 
-      margin-top: 35px;
+      margin-top: 2.1875rem;
 
       @include breakpoint-up (desktop) {
-        margin-top: 0px;
-        margin-left: 2em;
+        margin-top: 0rem;
+        margin-left: 1.7rem;
         justify-content: space-around;
       }
 
@@ -211,22 +211,22 @@
           color: hsl(180, 29%, 50%);
         }
 
-        &__new {
-          color: $white;
-          font-weight: 700;
-          margin-right: 5px;
-          font-size: .625rem;
-          border-radius: 25px;
-          padding: 6px 7px 4px;
-          background-color: hsl(180, 29%, 50%);
-        }
-
+        &__new,
         &__featured {
           color: $white;
           font-weight: 700;
           font-size: .625rem;
-          border-radius: 25px;
-          padding: 6px 7px 5px;
+          border-radius: 1.5625rem;
+        }
+
+        &__new {
+          margin-right: .3125rem;
+          background-color: $headerBG;
+          padding: .375rem .4375rem .25rem;
+        }
+
+        &__featured {
+          padding: .375rem .4375rem .3125rem;
           background-color: $veryDarkGrayishCyan;
         }
       }
@@ -244,7 +244,7 @@
       }
 
       &__details {
-        font-size: 12px;
+        font-size: .75rem;
         margin-top: .875rem;
         color: $darkGrayishCyan;
         font-family: $spartanFamily;
@@ -253,8 +253,8 @@
 
     &__divider {
       width: 100%;
-      height: 1px;
-      margin: 10px 0;
+      height: .0625rem;
+      margin: .625rem 0;
       background-color: $lightGrayishCyan2;
 
       @include breakpoint-up (desktop) {
@@ -268,20 +268,20 @@
       align-items: center;
       flex-flow: row wrap;
       justify-content: flex-start;
-      margin-bottom: 15px;
+      margin-bottom: .9375rem;
 
       @include breakpoint-up (desktop) {
-        margin-bottom: 0px;
+        margin-bottom: 0rem;
         align-items: center;
         justify-content: flex-end;
       }
 
       &__skill {
-        padding: 8px;
+        padding: .5rem;
         color: $headerBG;
         font-weight: 700;
         font-size: .75rem;
-        border-radius: 4px;
+        border-radius: .25rem;
         margin: 0 1rem .5rem 0;
         font-family: $spartanFamily;
         transition: all .2s ease-in-out;
